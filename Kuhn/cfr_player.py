@@ -1,9 +1,9 @@
 import random
 import numpy as np
 from enum import Enum
-from .kuhn_poker import History, Action, Game
+from .kuhn_poker import History, Action, Game, Player
 
-class Player_Strategy():
+class Player_Strategy(Player):
 
     def __init__(self):
         self.strategy: dict[History, dict[Action, float]] = {}
@@ -21,8 +21,3 @@ class Player_Strategy():
             action = random.randint(0, len(possible_actions))
             self.strategy[game_state_index][action] = 1
             return action
-
-
-
-game = Game()
-game.start()

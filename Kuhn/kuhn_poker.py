@@ -12,7 +12,7 @@ Card = int
 History = list[Card | Action]
 
 class Player:
-    def get_move() -> Action:
+    def get_move(self, game_state: History, possible_actions: list[Action]) -> Action:
         pass
 
 class Game():
@@ -36,7 +36,7 @@ class Game():
 
         return self.deck.pop(i)
 
-    def get_move(self, player_strategy: Player_Strategy, possible_moves: list[Action]) -> Action:
+    def get_move(self, player_strategy: Player, possible_moves: list[Action]) -> Action:
         action = player_strategy.get_move(self.history, possible_moves)
         self.history.append(action)
         if action == Action.CALL or action == Action.RAISE:
